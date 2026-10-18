@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-inicio {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  border: 3px solid black;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.doctor,
+.paciente {
+  flex: 1;
+  text-align: center;
+  background-color: rgb(11, 178, 230);
+  background-size: 150%;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+.doctor {
+  border-right: 2px solid black;
+  background-image: url("../imgs/doctor_sonriendo.png");
+}
+
+.paciente {
+  background-image: url("../imgs/paciente_sonriendo.png");
+}
+
+.doctor h2,
+.paciente h2 {
+  margin-top: 30px;
+  color: white;
+}
+
+button {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid rgb(109, 108, 108);
+  transition: all 0.3s ease;
+}
+
+.dr:hover,
+.pct:hover {
+  background-color: rgb(71, 71, 71);
+  color: white;
+  border-color: rgb(10, 10, 10);
+}
