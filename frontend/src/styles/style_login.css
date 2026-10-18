@@ -121,3 +121,24 @@ body {
 .btn-volver:hover {
   color: black;
 }
+
+/* Mensaje del login */
+.verificarLogin {
+  margin: 4px 0 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  background: #eef7fb;
+  color: #0a6f91;
+}
+
+.verificarLogin.error {
+  background: #fde8e6;
+  color: #b42318;
+}
+
+.verificarLogin.ok {
+  background: #e1f4e7;
+  color: #157f3b;
+}

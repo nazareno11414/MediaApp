@@ -13,9 +13,20 @@ export function LoginApp({ setRol, rol }) {
   const [user, setUser] = useState("");
   const [passw, setPassw] = useState("");
 
+  const [loguear, setLogear] = useState("Iniciar sesion");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user, passw);
+
+    if (user.trim() === "" || passw.trim() === "") {
+      setLogear("Error, campos incompletos");
+    } else {
+      if (user.trim() === "naza" && passw.trim() === "123") {
+        setLogear("Login exitoso");
+      } else {
+        setLogear("Error en los campos");
+      }
+    }
   };
 
   return (
@@ -25,7 +36,9 @@ export function LoginApp({ setRol, rol }) {
       </div>
       <div className="box-form-login">
         <h2>Bienvenido de nuevo {rolPersona}</h2>
+
         <h3>Por favor ingrese sus datos</h3>
+
         <form onSubmit={handleSubmit}>
           <label htmlFor="usuario">usuario</label>
           <input
@@ -49,6 +62,7 @@ export function LoginApp({ setRol, rol }) {
           >
             {variableButtonPassword}
           </button>
+          <p className="verificarLogin">{loguear}</p>
           <button className="btn-ingresar" type="submit">
             Ingresar
           </button>
