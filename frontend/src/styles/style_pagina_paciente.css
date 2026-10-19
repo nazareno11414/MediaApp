@@ -1,0 +1,97 @@
+/* ========== Contenedor del panel ========== */
+.panel-paciente {
+  width: 90vw;
+  max-width: 1200px;
+  min-height: 85vh;
+  margin: 24px;
+  background: white;
+  border: 3px solid black;
+  border-radius: 24px;
+  overflow: hidden; /* que el header respete las esquinas redondeadas */
+}
+
+/* ========== Header: logo + nombre + salir ========== */
+.header-paciente {
+  display: flex;
+  align-items: center; /* centra todo en vertical */
+  gap: 14px;
+  padding: 16px 24px;
+  background: rgb(11, 178, 230);
+  color: white;
+}
+
+/* El círculo del logo / avatar */
+.header-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* 50% = círculo */
+  background: white;
+  color: rgb(11, 178, 230);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nombre y "Paciente", uno arriba del otro */
+.header-texto {
+  flex: 1; /* ocupa todo el espacio que sobra: empuja "salir" a la derecha */
+}
+
+.header-texto h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.header-texto h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.btn-salir {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 50px;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-salir:hover {
+  background: white;
+  color: rgb(11, 178, 230);
+}
+
+/* ========== Pestañas ========== */
+.pestanas-paciente {
+  display: flex;
+  gap: 4px;
+  padding: 0 16px;
+  border-bottom: 1px solid #ddd; /* línea gris debajo de todas */
+}
+
+.boton-vista {
+  cursor: pointer;
+  padding: 14px 12px;
+  border: none;
+  border-bottom: 3px solid transparent; /* línea invisible, reserva el lugar */
+  background: none;
+  color: #777;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.boton-vista:hover {
+  color: black;
+}
+
+/* La pestaña activa: color + línea abajo */
+.boton-vista.activa {
+  color: rgb(11, 178, 230);
+  border-bottom-color: rgb(11, 178, 230);
+}

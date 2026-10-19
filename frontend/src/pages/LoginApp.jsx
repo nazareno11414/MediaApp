@@ -3,7 +3,7 @@ import imgPaciente from "../imgs/paciente_sonriendo.png";
 import imgDoctor from "../imgs/doctor_sonriendo.png";
 import { useState } from "react";
 
-export function LoginApp({ setRol, rol }) {
+export function LoginApp({ setRol, rol, setLogin }) {
   const rolPersona = rol === "dr" ? "Doctor" : "Paciente";
   const imgPersona = rol === "dr" ? imgDoctor : imgPaciente;
   const [campoPassword, setCampoPassowrd] = useState(true);
@@ -22,7 +22,7 @@ export function LoginApp({ setRol, rol }) {
       setLogear("Error, campos incompletos");
     } else {
       if (user.trim() === "naza" && passw.trim() === "123") {
-        setLogear("Login exitoso");
+        setLogin(user);
       } else {
         setLogear("Error en los campos");
       }

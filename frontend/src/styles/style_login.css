@@ -13,8 +13,9 @@ body {
 }
 
 .box-login {
-  width: 100%;
-  max-width: 750px;
+  width: 90vw;
+  max-width: 1200px;
+  min-height: 85vh;
   display: flex;
   background: white;
   border: 3px solid black;
