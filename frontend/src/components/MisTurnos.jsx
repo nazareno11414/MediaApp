@@ -1,53 +1,26 @@
 import { TarjetaTurnos } from "./TarjetaTurnos";
-import { useState } from "react";
-export function MisTurnos() {
-  const [turnos, setTurnos] = useState([
-    {
-      id: 1,
-      medico: "Dr.Juan Perez",
-      clinica: "clinica Medica",
-      horario: "09:30",
-      indicacion: "control General",
-      estado: "pendiente",
-    },
-    {
-      id: 2,
-      medico: "Dr.Juan Perez",
-      clinica: "Pediatria",
-      horario: "12:30",
-      indicacion: "control General",
-      estado: "cancelado",
-    },
-    {
-      id: 3,
-      medico: "Dr.Juan Perez",
-      clinica: "Pediatria",
-      horario: "12:30",
-      indicacion: "control General",
-      estado: "atendido",
-    },
-  ]);
+import "../styles/style_misturnos.css";
 
+export function MisTurnos({ turnos, cancelarTurno }) {
   const turnosPendientes = turnos.filter((t) => t.estado === "pendiente");
   const turnosHistorial = turnos.filter((h) => h.estado !== "pendiente");
 
-  const btonCancelar = (id) => {
-    const listaCancelada = turnos.map((c) =>
-      c.id === id ? { ...c, estado: "cancelado" } : c,
-    );
-    setTurnos(listaCancelada);
-  };
-
+  const sinTurnosPendientes = turnosPendientes.length === 0;
+  const sinTurnosHistorial = turnosHistorial.length === 0;
   return (
-    <div>
-      <div>
-        <h2>Turnos pendientes</h2>
+    <div className="mis-turnos">
+      <div className="seccion-turnos">
+        <h2 className="titulo-seccion">Turnos pendientes</h2>
+        {sinTurnosPendientes && <p className="sin-turnos">No tenes turnos</p>}
         {turnosPendientes.map((t) => (
-          <TarjetaTurnos key={t.id} turno={t} onCancelar={btonCancelar} />
+          <TarjetaTurnos key={t.id} turno={t} onCancelar={cancelarTurno} />
         ))}
       </div>
-      <div>
-        <h2>Historial</h2>
+      <div className="seccion-turnos historial">
+        <h2 className="titulo-seccion">Historial</h2>
+        {sinTurnosHistorial && (
+          <p className="sin-turnos">Todavía no hay turnos pasados</p>
+        )}
         {turnosHistorial.map((h) => (
           <TarjetaTurnos key={h.id} turno={h} />
         ))}
