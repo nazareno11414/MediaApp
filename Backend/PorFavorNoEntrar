@@ -1,0 +1,7 @@
+Service URI: postgres://avnadmin:AVNS_DVTXrsVcS-TUjElQh1o@pg-3906b78b-proyecto-turnos.f.aivencloud.com:18095/defaultdb?sslmode=require
+Database Name: defaultdb
+Host: pg-3906b78b-proyecto-turnos.f.aivencloud.com
+Port: 18095
+User: avnadmin
+Password: AVNS_DVTXrsVcS-TUjElQh1o
+SSL: require
