@@ -35,6 +35,18 @@ export function PanelPaciente({ login, setLogin }) {
       estado: "pendiente",
     },
   ]);
+
+  const [perfilPaciente, setPerfilPaciente] = useState([
+    {
+      id: 1,
+      nombre: "Nazareno Cammarota",
+      email: "naza2.0@hotmail.com",
+      dni: "43082447",
+      tell: "1140644367",
+      obraSocial: "Osde",
+    },
+  ]);
+
   const agregarTurno = (nuevoTurno) => {
     const nuevoArrayTurno = [...turnos, nuevoTurno];
     setTurnos(nuevoArrayTurno);
@@ -57,16 +69,22 @@ export function PanelPaciente({ login, setLogin }) {
   if (vista === "Indicaciones") {
     vistaPrevia = <Indicaciones />;
   }
+  const pacientePerfil = perfilPaciente.find((m) => m.id === Number(1));
   if (vista === "miPerfil") {
-    vistaPrevia = <MiPerfil />;
+    vistaPrevia = <MiPerfil pacientePerfil={pacientePerfil} />;
   }
+
+  const nombreCortado = pacientePerfil.nombre.slice(
+    0,
+    pacientePerfil.nombre.lastIndexOf(" "),
+  );
 
   return (
     <div className="panel-paciente">
       <header className="header-paciente">
         <div className="header-logo">logo</div>
         <div className="header-texto">
-          <h2>Bienvenido de nuevo {login}</h2>
+          <h2>Bienvenido de nuevo {nombreCortado}</h2>
           <h3>Paciente</h3>
         </div>
 

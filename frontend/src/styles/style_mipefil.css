@@ -1,0 +1,59 @@
+/* ========== Contenedor ========== */
+.mi-perfil {
+  padding: 24px;
+  max-width: 560px;
+}
+
+.mi-perfil h2 {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+/* ========== Lista de datos: dos columnas ========== */
+.datos-perfil {
+  display: grid;
+  grid-template-columns: 140px 1fr; /* columna de etiquetas + columna de valores */
+  margin: 0 0 24px;
+  border: 1px solid #e3e3e3;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Etiqueta (DNI, Teléfono...) */
+.datos-perfil dt {
+  padding: 12px 16px;
+  background: #f6f9f9;
+  color: #777;
+  font-size: 14px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+/* Valor */
+.datos-perfil dd {
+  margin: 0; /* el navegador le pone sangría por defecto */
+  padding: 12px 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+/* La última fila sin línea abajo */
+.datos-perfil dt:last-of-type,
+.datos-perfil dd:last-of-type {
+  border-bottom: none;
+}
+
+/* ========== En celular: una columna ========== */
+@media (max-width: 500px) {
+  .datos-perfil {
+    grid-template-columns: 1fr;
+  }
+
+  .datos-perfil dt {
+    border-bottom: none;
+    padding-bottom: 4px;
+  }
+}

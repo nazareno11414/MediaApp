@@ -1,31 +1,92 @@
 import { useState } from "react";
+import "../styles/style_pedirturno.css";
 export function PedirTurnos({ turnos, agregarTurno }) {
   const [medico, setMedico] = useState("");
   const [fecha, setFecha] = useState("");
   const [horario, setHorario] = useState("");
   const [motivo, setMotivo] = useState("");
 
+  const [error, setError] = useState("");
+
   const reservaTurno = (e) => {
     e.preventDefault();
+
+    const medicoElegido = medicos.find((m) => m.id === Number(medico));
+
+    if (medico === "") {
+      setError("Elige un medico");
+      return;
+    }
+
+    if (fecha === "") {
+      setError("Eliga una fecha");
+      return;
+    }
+    if (horario === "") {
+      setError("Eliga un horario");
+      return;
+    }
+    if (motivo === "") {
+      setError("Escriba un motivo");
+      return;
+    }
+    if (error !== "") {
+      setError("");
+    }
+
     agregarTurno({
-      id: 4,
-      medico: medico,
-      clinica: "Pediatria",
+      id: Date.now(),
+      medico: medicoElegido.nameDoctor,
+      clinica: medicoElegido.especialidad,
       horario: horario,
       fecha: fecha,
       indicacion: motivo,
       estado: "pendiente",
     });
+
+    setMedico("");
+    setFecha("");
+    setHorario("");
+    setMotivo("");
   };
 
+  const medicos = [
+    { id: 1, nameDoctor: "Juan Perez", especialidad: "Clinico" },
+    { id: 2, nameDoctor: "Christian Cammarota", especialidad: "Pediatra" },
+    { id: 3, nameDoctor: "Nazareno Cammarota", especialidad: "Cardiologo" },
+  ];
+  const horarios = [
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+  ];
+
   return (
-    <div>
-      <form onSubmit={reservaTurno}>
+    <div className="pedir-turno">
+      <form onSubmit={reservaTurno} className="form-turno">
         <h2>Reservar un turno</h2>
         <label>Medico</label>
         <select value={medico} onChange={(e) => setMedico(e.target.value)}>
           <option value="">Elegi un medico...</option>
-          <option value="juan">Juan</option>
+          {medicos.map((m) => (
+            <option key={m.id} value={m.id}>
+              {m.nameDoctor} - {m.especialidad}
+            </option>
+          ))}
         </select>
         <label>fecha</label>
         <input
@@ -40,8 +101,12 @@ export function PedirTurnos({ turnos, agregarTurno }) {
           value={horario}
           onChange={(e) => setHorario(e.target.value)}
         >
-          <option value="1">Seleccione el horario</option>
-          <option value="2">9:30</option>
+          <option value="">Seleccione el horario</option>
+          {horarios.map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
         </select>
         <label htmlFor="">Motivo de la consulta</label>
         <input
@@ -51,8 +116,9 @@ export function PedirTurnos({ turnos, agregarTurno }) {
           name=""
           id=""
         />
-        <button>Reservar turno</button>
+        <button className="btn-reservar">Reservar turno</button>
       </form>
+      {error !== "" && <p className="mensaje-error-reserva">{error}</p>}
     </div>
   );
 }
