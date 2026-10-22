@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/style_pedirturno.css";
-export function PedirTurnos({ turnos, agregarTurno }) {
+export function PedirTurnos({ turnos, agregarTurno, patient_id }) {
   const [medico, setMedico] = useState("");
   const [fecha, setFecha] = useState("");
   const [horario, setHorario] = useState("");
@@ -40,8 +40,10 @@ export function PedirTurnos({ turnos, agregarTurno }) {
       clinica: medicoElegido.especialidad,
       horario: horario,
       fecha: fecha,
-      indicacion: motivo,
+      motivo: motivo,
       estado: "pendiente",
+      doctor_id: medicoElegido.id,
+      patient_id: patient_id,
     });
 
     setMedico("");
@@ -51,9 +53,9 @@ export function PedirTurnos({ turnos, agregarTurno }) {
   };
 
   const medicos = [
-    { id: 1, nameDoctor: "Juan Perez", especialidad: "Clinico" },
+    { id: 4, nameDoctor: "Juan Perez", especialidad: "Clinico" },
     { id: 2, nameDoctor: "Christian Cammarota", especialidad: "Pediatra" },
-    { id: 3, nameDoctor: "Nazareno Cammarota", especialidad: "Cardiologo" },
+    { id: 1, nameDoctor: "Nazareno Cammarota", especialidad: "Cardiologo" },
   ];
   const horarios = [
     "09:00",

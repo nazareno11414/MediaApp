@@ -5,58 +5,22 @@ import { PedirTurnos } from "../components/PedirTurnos.jsx";
 import { Indicaciones } from "../components/Indicaciones.jsx";
 import { MiPerfil } from "../components/MiPerfil.jsx";
 
-export function PanelPaciente({ login, setLogin }) {
-  const [turnos, setTurnos] = useState([
-    {
-      id: 1,
-      medico: "Dr.Juan Perez",
-      clinica: "clinica Medica",
-      horario: "09:30",
-      fecha: "10-4-16",
-      indicacion: "control General",
-      estado: "pendiente",
-    },
-    {
-      id: 2,
-      medico: "Dr.Juan Perez",
-      clinica: "Pediatria",
-      horario: "12:30",
-      fecha: "10-4-16",
-      indicacion: "control General",
-      estado: "pendiente",
-    },
-    {
-      id: 3,
-      medico: "Dr.Juan Perez",
-      clinica: "Pediatria",
-      horario: "12:30",
-      fecha: "10-4-16",
-      indicacion: "control General",
-      estado: "pendiente",
-    },
-  ]);
-
-  const [perfilPaciente, setPerfilPaciente] = useState([
-    {
-      id: 1,
-      nombre: "Nazareno Cammarota",
-      email: "naza2.0@hotmail.com",
-      dni: "43082447",
-      tell: "1140644367",
-      obraSocial: "Osde",
-    },
-  ]);
-
-  const agregarTurno = (nuevoTurno) => {
-    const nuevoArrayTurno = [...turnos, nuevoTurno];
-    setTurnos(nuevoArrayTurno);
-  };
-  const cancelarTurno = (id) => {
-    const listaCancelada = turnos.map((c) =>
-      c.id === id ? { ...c, estado: "cancelado" } : c,
-    );
-    setTurnos(listaCancelada);
-  };
+export function PanelPaciente({
+  login,
+  setLogin,
+  turnos,
+  agregarTurno,
+  cancelarTurno,
+  perfilPaciente,
+}) {
+  const pacientePerfil = perfilPaciente.find((m) => m.id === Number(1));
+  const datosPerfilPaciente = [
+    { etiqueta: "Nombre", valor: pacientePerfil.nombre },
+    { etiqueta: "Email", valor: pacientePerfil.email },
+    { etiqueta: "Telefono", valor: pacientePerfil.tell },
+    { etiqueta: "Obra social", valor: pacientePerfil.obraSocial },
+    { etiqueta: "Dni", valor: pacientePerfil.dni },
+  ];
 
   const [vista, setVista] = useState("misTurnos");
   let vistaPrevia;
@@ -64,14 +28,25 @@ export function PanelPaciente({ login, setLogin }) {
     vistaPrevia = <MisTurnos turnos={turnos} cancelarTurno={cancelarTurno} />;
   }
   if (vista === "pedirTurno") {
-    vistaPrevia = <PedirTurnos turnos={turnos} agregarTurno={agregarTurno} />;
+    vistaPrevia = (
+      <PedirTurnos
+        turnos={turnos}
+        agregarTurno={agregarTurno}
+        patient_id={pacientePerfil.patient_id}
+      />
+    );
   }
+
+  const indicacionesAtendidas = turnos.filter((i) => i.estado === "atendido");
+
   if (vista === "Indicaciones") {
-    vistaPrevia = <Indicaciones />;
+    vistaPrevia = (
+      <Indicaciones indicacionesAtendidas={indicacionesAtendidas} />
+    );
   }
-  const pacientePerfil = perfilPaciente.find((m) => m.id === Number(1));
+
   if (vista === "miPerfil") {
-    vistaPrevia = <MiPerfil pacientePerfil={pacientePerfil} />;
+    vistaPrevia = <MiPerfil perfil={datosPerfilPaciente} />;
   }
 
   const nombreCortado = pacientePerfil.nombre.slice(

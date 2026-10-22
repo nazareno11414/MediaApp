@@ -28,7 +28,7 @@ export function LoginApp({ setRol, rol, setLogin }) {
       }
     }
   };
-
+  console.log(user);
   return (
     <div className="box-login">
       <div className="box-img-login">

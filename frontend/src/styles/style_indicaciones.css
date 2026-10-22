@@ -1,0 +1,72 @@
+/* ========== Contenedor de la pestaña ========== */
+.indicaciones {
+  padding: 8px 0 24px;
+}
+
+.indicaciones .titulo-seccion {
+  margin: 20px 24px 8px;
+}
+
+/* ========== Cada tarjeta ========== */
+.tarjeta-indicacion {
+  display: grid;
+  grid-template-columns: auto 1fr; /* fecha a la izquierda, el resto a la derecha */
+  column-gap: 16px;
+  margin: 12px 24px;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid #e3e3e3;
+  border-radius: 14px;
+}
+
+/* La fecha ocupa toda la altura de la columna izquierda */
+.indicacion-fecha {
+  grid-row: span 3;
+  align-self: start;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #e3f6fc;
+  color: rgb(11, 178, 230);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.indicacion-medico {
+  margin: 0;
+  font-size: 16px;
+}
+
+.indicacion-especialidad {
+  margin: 2px 0 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* La nota del médico: con una barra de color a la izquierda */
+.indicacion-nota {
+  padding: 10px 14px;
+  border-left: 3px solid rgb(11, 178, 230);
+  border-radius: 0 10px 10px 0;
+  background: #f6f9f9;
+}
+
+.indicacion-nota p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ========== En celular: la fecha arriba ========== */
+@media (max-width: 500px) {
+  .tarjeta-indicacion {
+    grid-template-columns: 1fr;
+    margin: 12px;
+  }
+
+  .indicacion-fecha {
+    grid-row: auto;
+    justify-self: start;
+    margin-bottom: 10px;
+  }
+}

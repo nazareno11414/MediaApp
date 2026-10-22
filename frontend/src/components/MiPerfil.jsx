@@ -1,18 +1,15 @@
 import "../styles/style_mipefil.css";
-export function MiPerfil({ pacientePerfil }) {
+import { Fragment } from "react";
+export function MiPerfil({ perfil }) {
   return (
     <div className="mi-perfil">
       <dl className="datos-perfil">
-        <dt>Nombre:</dt>
-        <dd>{pacientePerfil.nombre}</dd>
-        <dt>Email:</dt>
-        <dd>{pacientePerfil.email}</dd>
-        <dt>Numero de telefono:</dt>
-        <dd>{pacientePerfil.tell}</dd>
-        <dt>Obra social:</dt>
-        <dd>{pacientePerfil.obraSocial}</dd>
-        <dt>DNI:</dt>
-        <dd>{pacientePerfil.dni}</dd>
+        {perfil.map((p) => (
+          <Fragment key={p.etiqueta}>
+            <dt>{p.etiqueta}</dt>
+            <dd>{p.valor}</dd>
+          </Fragment>
+        ))}
       </dl>
     </div>
   );

@@ -1,0 +1,107 @@
+/* ========== Contenedor de la pestaña ========== */
+.mis-pacientes {
+  padding: 8px 0 24px;
+}
+
+.mis-pacientes .titulo-seccion {
+  margin: 20px 24px 8px;
+}
+
+/* ========== Tarjeta de cada paciente ========== */
+.tarjeta-paciente {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 24px;
+  padding: 14px 18px;
+  background: white;
+  border: 1px solid #e3e3e3;
+  border-radius: 14px;
+  transition: box-shadow 0.2s ease;
+}
+
+.tarjeta-paciente:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Círculo con las iniciales */
+.avatar-paciente {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e4e8fa;
+  color: rgb(58, 79, 176);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nombre y datos */
+.info-paciente {
+  flex: 1; /* empuja la cantidad de turnos a la derecha */
+}
+
+.nombre-paciente {
+  margin: 0 0 2px;
+  font-size: 16px;
+}
+
+.detalle-paciente {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+/* ========== Buscador ========== */
+.buscador {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 20px 24px 8px;
+}
+
+.buscador label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+.buscador input {
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 50px; /* bordes de "pastilla", típico de buscadores */
+  font-size: 15px;
+  font-family: inherit;
+  color: inherit;
+}
+
+.buscador input:focus {
+  outline: none;
+  border-color: rgb(58, 79, 176); /* el índigo del médico */
+}
+
+/* ========== Mensajes vacíos (dentro del panel del médico) ========== */
+.mis-pacientes .sin-turnos {
+  margin: 12px 24px;
+  padding: 18px;
+  border: 1.5px dashed #ccc;
+  border-radius: 14px;
+  text-align: center;
+  color: #888;
+}
+
+/* ========== En celular ========== */
+@media (max-width: 500px) {
+  .tarjeta-paciente {
+    flex-wrap: wrap;
+    margin: 12px;
+  }
+
+  .cantidad-turnos {
+    margin-left: 58px; /* queda alineada debajo del nombre */
+  }
+}

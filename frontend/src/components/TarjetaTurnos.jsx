@@ -6,7 +6,7 @@ export function TarjetaTurnos({ turno, onCancelar }) {
       <div className="fecha-turno">
         <h2>{turno.medico}</h2>
         <p>
-          {turno.clinica} - {turno.horario} h - {turno.indicacion}
+          {turno.clinica} - {turno.horario} h - {turno.motivo}
         </p>
         <h4 className="estado pendiente">{turno.estado}</h4>
       </div>
