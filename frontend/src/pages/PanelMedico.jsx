@@ -4,7 +4,14 @@ import { Agenda } from "../components/Agenda.jsx";
 import { MisPacientes } from "../components/MisPacientes.jsx";
 import { MiPerfil } from "../components/MiPerfil.jsx";
 
-export function PanelMedico({ login, setLogin, turnos, perfilPaciente }) {
+export function PanelMedico({
+  login,
+  setLogin,
+  turnos,
+  perfilPaciente,
+  cambiarEstado,
+  cambiarMotivo,
+}) {
   const doctores = [
     {
       doctor_id: 1,
@@ -40,7 +47,13 @@ export function PanelMedico({ login, setLogin, turnos, perfilPaciente }) {
     );
   }
   if (vista === "agenda") {
-    vistaPrevia = <Agenda />;
+    vistaPrevia = (
+      <Agenda
+        turnosMedico={turnosMedico}
+        cambiarEstado={cambiarEstado}
+        cambiarMotivo={cambiarMotivo}
+      />
+    );
   }
   if (vista === "miPerfil") {
     vistaPrevia = <MiPerfil perfil={datosPerfilDoctor} />;

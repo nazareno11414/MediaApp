@@ -24,32 +24,8 @@ export function App() {
       id: 2,
       medico: "Dr.Juan Perez",
       clinica: "clinica Medica",
-      horario: "12:30",
-      fecha: "2026-12-06",
-      motivo: "control General",
-      estado: "pendiente",
-      indicaciones: "",
-      doctor_id: 1,
-      patient_id: 2,
-    },
-    {
-      id: 2,
-      medico: "Dr.Juan Perez",
-      clinica: "clinica Medica",
-      horario: "12:30",
-      fecha: "2026-09-06",
-      motivo: "control General",
-      estado: "pendiente",
-      indicaciones: "",
-      doctor_id: 1,
-      patient_id: 2,
-    },
-    {
-      id: 2,
-      medico: "Dr.Juan Perez",
-      clinica: "clinica Medica",
-      horario: "12:30",
-      fecha: "2026-02-06",
+      horario: "17:30",
+      fecha: "2026-10-28",
       motivo: "control General",
       estado: "pendiente",
       indicaciones: "",
@@ -58,12 +34,36 @@ export function App() {
     },
     {
       id: 3,
+      medico: "Dr.Juan Perez",
+      clinica: "clinica Medica",
+      horario: "12:30",
+      fecha: "2026-10-31",
+      motivo: "control General",
+      estado: "pendiente",
+      indicaciones: "",
+      doctor_id: 1,
+      patient_id: 2,
+    },
+    {
+      id: 6,
+      medico: "Dr.Juan Perez",
+      clinica: "clinica Medica",
+      horario: "13:30",
+      fecha: "2026-10-23",
+      motivo: "control General",
+      estado: "pendiente",
+      indicaciones: "",
+      doctor_id: 1,
+      patient_id: 2,
+    },
+    {
+      id: 5,
       medico: "Nazareno",
       clinica: "Pediatria",
       horario: "12:30",
-      fecha: "2026-01-06",
+      fecha: "2026-10-23",
       motivo: "control General",
-      estado: "atendido",
+      estado: "pendiente",
       indicaciones: "tomar ibuprofeno cada media hora",
       doctor_id: 2,
       patient_id: 1,
@@ -100,7 +100,19 @@ export function App() {
     );
     setTurnos(listaCancelada);
   };
-
+  const cambiarEstado = (id) => {
+    const listaCambiada = turnos.map((t) =>
+      t.id === id ? { ...t, estado: "atendido" } : t,
+    );
+    setTurnos(listaCambiada);
+  };
+  const cambiarMotivo = (id, motivo) => {
+    console.log(motivo);
+    const listaCambiada = turnos.map((t) =>
+      t.id === id ? { ...t, indicaciones: motivo } : t,
+    );
+    setTurnos(listaCambiada);
+  };
   if (login) {
     if (rol === "dr") {
       return (
@@ -109,6 +121,8 @@ export function App() {
           setLogin={setLogin}
           turnos={turnos}
           perfilPaciente={perfilPaciente}
+          cambiarEstado={cambiarEstado}
+          cambiarMotivo={cambiarMotivo}
         />
       );
     } else if (rol === "pct") {
