@@ -1,34 +1,21 @@
-* {
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f4f5;
-}
-
+/* ========== Pantalla de login ========== */
 .box-login {
   width: 90vw;
-  max-width: 1200px;
-  min-height: 85vh;
+  max-width: 1100px;
+  min-height: 80vh;
   display: flex;
-  background: white;
-  border: 3px solid black;
-  border-radius: 40px;
+  background: var(--superficie);
+  border-radius: 32px;
   overflow: hidden;
+  box-shadow: var(--sombra);
 }
 
-/* Mitad de la imagen */
+/* ========== Mitad de la imagen ========== */
 .box-img-login {
   flex: 1;
-  background-color: rgb(11, 178, 230);
   display: flex;
   align-items: flex-end;
+  background: linear-gradient(160deg, var(--pac), var(--pac-oscuro));
 }
 
 .box-img-login img {
@@ -36,10 +23,10 @@ body {
   display: block;
 }
 
-/* Mitad del formulario */
+/* ========== Mitad del formulario ========== */
 .box-form-login {
   flex: 1;
-  padding: 40px 32px;
+  padding: 48px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,13 +34,14 @@ body {
 
 .box-form-login h2 {
   margin: 0 0 6px;
+  font-size: 26px;
 }
 
 .box-form-login h3 {
-  margin: 0 0 24px;
-  font-weight: 400;
+  margin: 0 0 28px;
   font-size: 15px;
-  color: #666;
+  font-weight: 400;
+  color: var(--texto-suave);
 }
 
 .box-form-login form {
@@ -63,83 +51,110 @@ body {
 }
 
 .box-form-login label {
+  margin-top: 6px;
   font-size: 14px;
   font-weight: 600;
   text-transform: capitalize;
 }
 
 .box-form-login input {
-  padding: 10px 14px;
-  border: 1.5px solid #ccc;
+  padding: 11px 14px;
+  border: 1.5px solid var(--borde);
   border-radius: 10px;
+  background: var(--superficie);
   font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .box-form-login input:focus {
   outline: none;
-  border-color: rgb(11, 178, 230);
+  border-color: var(--pac);
+  box-shadow: 0 0 0 3px var(--pac-suave);
 }
 
-/* Botones */
+/* ========== Botones ========== */
 .box-form-login button {
-  cursor: pointer;
-  font-size: 15px;
   padding: 10px 20px;
+  border: 1px solid var(--borde);
   border-radius: 50px;
-  border: 1px solid #0e0d0d;
-  background: rgb(255, 255, 255);
-  transition: all 0.3s ease;
-  color: black;
-  font-family: sans-serif;
-  font-weight: 300;
+  background: var(--superficie);
+  font-size: 15px;
+  transition: all 0.2s ease;
 }
 
-.btn-ver {
+/* .box-form-login .btn-xxx: misma "fuerza" que la regla de arriba,
+   así estos estilos le ganan sin necesitar !important */
+.box-form-login .btn-ver {
   align-self: flex-end;
-  padding: 4px 12px;
+  padding: 4px 14px;
   font-size: 13px;
+  color: var(--texto-suave);
 }
 
-.btn-ingresar {
-  margin-top: 12px;
-  background: rgb(11, 178, 230);
-  border-color: transparent;
-  color: white;
-  font-weight: 600;
+.box-form-login .btn-ver:hover {
+  border-color: var(--texto-suave);
+  color: var(--texto);
 }
 
-.btn-ingresar:hover {
-  background: rgb(71, 71, 71);
-}
-
-.btn-volver {
+.box-form-login .btn-ingresar {
   margin-top: 12px;
   border: none;
+  background: var(--pac);
+  color: white;
+  font-weight: 700;
+}
+
+.box-form-login .btn-ingresar:hover {
+  background: var(--pac-oscuro);
+}
+
+.box-form-login .btn-volver {
+  margin-top: 16px;
+  border: none;
   background: none;
-  color: #666;
+  color: var(--texto-suave);
 }
 
-.btn-volver:hover {
-  color: black;
+.box-form-login .btn-volver:hover {
+  color: var(--texto);
 }
 
-/* Mensaje del login */
+/* ========== Mensaje del login ========== */
 .verificarLogin {
   margin: 4px 0 0;
   padding: 10px 14px;
   border-radius: 10px;
+  background: var(--pac-suave);
+  color: var(--pac-oscuro);
   font-size: 14px;
   text-align: center;
-  background: #eef7fb;
-  color: #0a6f91;
 }
 
 .verificarLogin.error {
-  background: #fde8e6;
-  color: #b42318;
+  background: var(--error-suave);
+  color: var(--error);
 }
 
 .verificarLogin.ok {
-  background: #e1f4e7;
-  color: #157f3b;
+  background: var(--ok-suave);
+  color: var(--ok);
+}
+
+/* ========== En celular: la imagen arriba ========== */
+@media (max-width: 700px) {
+  .box-login {
+    flex-direction: column;
+    margin: 16px;
+    border-radius: 24px;
+  }
+
+  .box-img-login img {
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .box-form-login {
+    padding: 28px 22px;
+  }
 }

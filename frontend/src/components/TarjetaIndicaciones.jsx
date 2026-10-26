@@ -4,9 +4,9 @@ export function TarjetaIndicaciones({ clinica, fecha, indicacion, medico }) {
     <article className="tarjeta-indicacion">
       <div className="indicacion-fecha">{fecha}</div>
       <h3 className="indicacion-medico">{medico}</h3>
-      <p className="indicacion-medico">{clinica}</p>
+      <p className="indicacion-especialidad">{clinica}</p>
       <div className="indicacion-nota">
-        <p indicacion-especialidad>{indicacion}</p>
+        <p>{indicacion}</p>
       </div>
     </article>
   );

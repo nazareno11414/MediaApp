@@ -1,64 +1,95 @@
-* {
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* ========== Pantalla de inicio: elegir doctor o paciente ========== */
 .box-inicio {
   width: 90vw;
   max-width: 1100px;
   height: 80vh;
+  min-height: 460px;
   display: flex;
-  border: 3px solid black;
-  border-radius: 50px;
+  border-radius: 40px;
   overflow: hidden;
+  box-shadow: var(--sombra);
 }
 
 .doctor,
 .paciente {
   flex: 1;
+  padding-top: 40px;
   text-align: center;
-  background-color: rgb(11, 178, 230);
   background-size: 150%;
   background-position: bottom center;
   background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+
+/* Al pasar el mouse, la imagen se acerca un poquito */
+.doctor:hover,
+.paciente:hover {
+  background-size: 158%;
 }
 
 .doctor {
-  border-right: 2px solid black;
+  background-color: var(--med);
   background-image: url("../imgs/doctor_sonriendo.png");
 }
 
 .paciente {
+  background-color: var(--pac);
   background-image: url("../imgs/paciente_sonriendo.png");
 }
 
 .doctor h2,
 .paciente h2 {
-  margin-top: 30px;
+  margin: 0 0 16px;
+  font-size: 28px;
   color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-button {
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 10px 20px;
+.dr,
+.pct {
+  padding: 12px 28px;
+  border: none;
   border-radius: 50px;
-  border: 1px solid rgb(109, 108, 108);
-  transition: all 0.3s ease;
+  background: white;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dr {
+  color: var(--med);
+}
+
+.pct {
+  color: var(--pac-oscuro);
 }
 
 .dr:hover,
 .pct:hover {
-  background-color: rgb(71, 71, 71);
-  color: white;
-  border-color: rgb(10, 10, 10);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== En celular: una tarjeta arriba de la otra ========== */
+@media (max-width: 700px) {
+  .box-inicio {
+    flex-direction: column;
+    height: auto;
+    min-height: 90vh;
+    margin: 16px;
+    border-radius: 28px;
+  }
+
+  .doctor,
+  .paciente {
+    min-height: 45vh;
+    padding-top: 24px;
+    background-size: 90%;
+  }
+
+  .doctor:hover,
+  .paciente:hover {
+    background-size: 90%;
+  }
 }

@@ -1,9 +1,8 @@
-/* ========== Contenedor ========== */
+/* ========== Pestaña "Pedir turno" ========== */
 .pedir-turno {
-  padding: 24px;
+  padding: 8px 24px 24px;
 }
 
-/* ========== Formulario ========== */
 .form-turno {
   max-width: 480px;
   display: flex;
@@ -11,13 +10,14 @@
   gap: 8px;
 }
 
+/* Mismo look que .titulo-seccion */
 .form-turno h2 {
-  margin: 0 0 12px;
+  margin: 16px 0 8px;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #888;
+  color: var(--texto-suave);
 }
 
 .form-turno label {
@@ -30,37 +30,37 @@
 /* Inputs y selects con el mismo estilo */
 .form-turno input,
 .form-turno select {
-  padding: 10px 14px;
-  border: 1.5px solid #ccc;
+  padding: 11px 14px;
+  border: 1.5px solid var(--borde);
   border-radius: 10px;
-  background: white;
+  background: var(--superficie);
   font-size: 15px;
-  font-family: inherit;
-  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-turno input:focus,
 .form-turno select:focus {
   outline: none;
-  border-color: rgb(11, 178, 230);
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px var(--acento-suave);
 }
 
 /* ========== Botón ========== */
 .btn-reservar {
   margin-top: 16px;
-  cursor: pointer;
   padding: 12px 20px;
   border: none;
   border-radius: 50px;
-  background: rgb(11, 178, 230);
+  background: var(--acento);
   color: white;
   font-size: 15px;
-  font-weight: 600;
-  transition: background 0.3s ease;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .btn-reservar:hover {
-  background: rgb(71, 71, 71);
+  background: var(--acento-oscuro);
+  transform: translateY(-1px);
 }
 
 /* ========== Mensaje de error ========== */
@@ -69,7 +69,7 @@
   margin: 12px 0 0;
   padding: 10px 14px;
   border-radius: 10px;
-  background: #fde8e6;
-  color: #b42318;
+  background: var(--error-suave);
+  color: var(--error);
   font-size: 14px;
 }

@@ -1,10 +1,6 @@
-/* ========== Contenedor de la pestaña ========== */
+/* ========== Pestaña "Indicaciones" del paciente ========== */
 .indicaciones {
-  padding: 8px 0 24px;
-}
-
-.indicaciones .titulo-seccion {
-  margin: 20px 24px 8px;
+  padding-bottom: 24px;
 }
 
 /* ========== Cada tarjeta ========== */
@@ -14,19 +10,19 @@
   column-gap: 16px;
   margin: 12px 24px;
   padding: 16px 20px;
-  background: white;
-  border: 1px solid #e3e3e3;
-  border-radius: 14px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
 }
 
-/* La fecha ocupa toda la altura de la columna izquierda */
+/* La fecha ocupa las 3 filas de la columna izquierda */
 .indicacion-fecha {
   grid-row: span 3;
   align-self: start;
   padding: 8px 10px;
   border-radius: 12px;
-  background: #e3f6fc;
-  color: rgb(11, 178, 230);
+  background: var(--acento-suave);
+  color: var(--acento);
   font-size: 13px;
   font-weight: 700;
   text-align: center;
@@ -40,21 +36,21 @@
 .indicacion-especialidad {
   margin: 2px 0 10px;
   font-size: 14px;
-  color: #777;
+  color: var(--texto-suave);
 }
 
 /* La nota del médico: con una barra de color a la izquierda */
 .indicacion-nota {
   padding: 10px 14px;
-  border-left: 3px solid rgb(11, 178, 230);
+  border-left: 3px solid var(--acento);
   border-radius: 0 10px 10px 0;
-  background: #f6f9f9;
+  background: var(--superficie-2);
 }
 
 .indicacion-nota p {
   margin: 0;
   font-size: 15px;
-  line-height: 1.5;
+  white-space: pre-line; /* respeta los saltos de línea que escribió el médico */
 }
 
 /* ========== En celular: la fecha arriba ========== */

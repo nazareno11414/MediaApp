@@ -1,34 +1,20 @@
-/* ========== Contenedor de toda la pestaña ========== */
+/* ========== Pestaña "Mis turnos" del paciente ========== */
 .mis-turnos {
-  padding: 8px 0 24px;
+  padding-bottom: 24px;
 }
 
-/* ========== Cada sección (pendientes / historial) ========== */
+/* Cada sección (pendientes / historial) */
 .seccion-turnos {
-  margin-top: 20px;
-}
-
-/* Títulos chiquitos en mayúscula, como en la maqueta */
-.titulo-seccion {
-  margin: 0 24px 4px;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #888;
-}
-
-/* ========== Mensaje cuando una sección está vacía ========== */
-.sin-turnos {
-  margin: 12px 24px;
-  padding: 18px;
-  border: 1.5px dashed #ccc; /* borde punteado */
-  border-radius: 14px;
-  text-align: center;
-  color: #888;
+  margin-top: 4px;
 }
 
 /* En el historial, las tarjetas un poco apagadas */
 .seccion-turnos.historial .box-tarjetas {
   opacity: 0.75;
 }
+
+.seccion-turnos.historial .box-tarjetas:hover {
+  opacity: 1;
+}
+
+/* (.titulo-seccion y .sin-turnos están en global.css) */

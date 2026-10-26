@@ -1,0 +1,260 @@
+/* =====================================================================
+   ESTILOS GLOBALES DE MEDIAPP
+   Se importa una sola vez en main.jsx. Acá van los colores (variables),
+   la base de la página y las clases que se usan en varias pantallas.
+   ===================================================================== */
+
+/* ========== Colores y medidas (variables) ========== */
+:root {
+  /* Paciente: celeste */
+  --pac: #0bb2e6;
+  --pac-oscuro: #0891bd;
+  --pac-suave: #e3f6fc;
+
+  /* Médico: índigo */
+  --med: #3a4fb0;
+  --med-oscuro: #2b3c8c;
+  --med-suave: #e4e8fa;
+
+  /* Estados */
+  --ok: #157f3b;
+  --ok-suave: #e1f4e7;
+  --aviso: #8a5a00;
+  --aviso-suave: #fff3d6;
+  --error: #b42318;
+  --error-suave: #fde8e6;
+  --error-borde: #f3c2bd;
+
+  /* Neutros */
+  --fondo: #eef3f5;
+  --superficie: #ffffff;
+  --superficie-2: #f6f9f9;
+  --texto: #16252b;
+  --texto-suave: #6b7a80;
+  --borde: #e3e8ea;
+
+  /* Formas */
+  --radio: 14px;
+  --radio-grande: 24px;
+  --sombra: 0 1px 2px rgba(16, 40, 48, 0.06), 0 8px 24px rgba(16, 40, 48, 0.08);
+  --sombra-hover: 0 8px 24px rgba(16, 40, 48, 0.12);
+}
+
+/* ========== Base ========== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/* El div donde React monta la app: ocupa todo el ancho y centra su contenido */
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Los inputs y botones no heredan la fuente por defecto */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Contorno visible al navegar con el teclado (Tab) */
+:focus-visible {
+  outline: 3px solid var(--pac);
+  outline-offset: 2px;
+}
+
+/* ========== Clases compartidas ========== */
+
+/* Títulos chiquitos de sección ("Turnos pendientes", "Hoy"...) */
+.titulo-seccion {
+  margin: 24px 24px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--texto-suave);
+}
+
+/* Mensaje cuando una lista está vacía */
+.sin-turnos {
+  margin: 12px 24px;
+  padding: 20px;
+  border: 1.5px dashed var(--borde);
+  border-radius: var(--radio);
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+/* Pastilla de estado de un turno */
+.estado {
+  display: inline-block;
+  margin: 0;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado.pendiente {
+  background: var(--aviso-suave);
+  color: var(--aviso);
+}
+
+.estado.atendido {
+  background: var(--ok-suave);
+  color: var(--ok);
+}
+
+.estado.cancelado {
+  background: var(--error-suave);
+  color: var(--error);
+}
+
+/* =====================================================================
+   PANELES (paciente y médico comparten la misma estructura)
+   Cada panel define su color en --acento (ver style_pagina_*.css)
+   ===================================================================== */
+.panel-paciente,
+.panel-medico {
+  width: 90vw;
+  max-width: 1100px;
+  min-height: 85vh;
+  margin: 24px;
+  background: var(--superficie);
+  border-radius: var(--radio-grande);
+  overflow: hidden; /* que el header respete las esquinas redondeadas */
+  box-shadow: var(--sombra);
+  min-width: 0; /* sin esto, un hijo de flex no se achica menos que su contenido */
+}
+
+/* ========== Header: logo + nombre + salir ========== */
+.header-paciente,
+.header-medico {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: linear-gradient(120deg, var(--acento), var(--acento-oscuro));
+  color: white;
+}
+
+.header-logo {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: white;
+  color: var(--acento);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-texto {
+  flex: 1; /* empuja el botón "salir" a la derecha */
+}
+
+.header-texto h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.header-texto h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.btn-salir {
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-salir:hover {
+  background: white;
+  color: var(--acento);
+}
+
+/* ========== Pestañas ========== */
+.pestanas-paciente,
+.pestanas-medico {
+  display: flex;
+  gap: 4px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--borde);
+  overflow-x: auto; /* en celular se pueden deslizar si no entran */
+}
+
+.boton-vista {
+  padding: 14px 12px;
+  border: none;
+  border-bottom: 3px solid transparent; /* línea invisible, reserva el lugar */
+  background: none;
+  color: var(--texto-suave);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.boton-vista:hover {
+  color: var(--texto);
+}
+
+.boton-vista.activa {
+  color: var(--acento);
+  border-bottom-color: var(--acento);
+}
+
+/* ========== En celular ========== */
+@media (max-width: 600px) {
+  .panel-paciente,
+  .panel-medico {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .header-paciente,
+  .header-medico {
+    padding: 14px 16px;
+  }
+}
+
+/* Si la persona pidió menos animaciones en su sistema, las sacamos */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

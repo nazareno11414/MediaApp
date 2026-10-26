@@ -1,0 +1,187 @@
+/* ========== Pestaña "Agenda" del médico ========== */
+.agenda {
+  padding-bottom: 24px;
+}
+
+/* ========== Resumen: 3 cajitas con números ========== */
+.agenda-resumen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* tres columnas iguales */
+  gap: 12px;
+  margin: 24px 24px 8px;
+}
+
+.agenda-resumen div {
+  padding: 14px 16px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie-2);
+}
+
+.agenda-resumen h3 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--acento);
+}
+
+.agenda-resumen p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+/* ========== La tarjeta de un turno ========== */
+.tarjeta-agenda {
+  display: flex;
+  flex-wrap: wrap; /* permite que el cuadro de escribir baje a una línea nueva */
+  align-items: center;
+  gap: 16px;
+  margin: 12px 24px;
+  padding: 16px 20px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  transition: box-shadow 0.2s ease;
+}
+
+.tarjeta-agenda:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+/* La hora grande a la izquierda */
+.agenda-hora {
+  width: 60px;
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+.agenda-info {
+  flex: 1;
+  min-width: 160px;
+}
+
+.agenda-info h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.agenda-info p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+/* ========== Botones ========== */
+.agenda-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.agenda-acciones button,
+.btn-guardar {
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-atendido {
+  border: none;
+  background: var(--ok-suave);
+  color: var(--ok);
+}
+
+.btn-atendido:hover {
+  background: var(--ok);
+  color: white;
+}
+
+.btn-indicacion {
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+}
+
+.btn-indicacion:hover {
+  border-color: var(--acento);
+  color: var(--acento);
+}
+
+/* ========== Cuadro para escribir la indicación ========== */
+.agenda-escribir {
+  width: 100%; /* ocupa toda la fila, debajo de lo demás */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--borde);
+}
+
+.agenda-escribir label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+
+.agenda-escribir textarea {
+  min-height: 90px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--borde);
+  border-radius: 10px;
+  font-size: 15px;
+  resize: vertical; /* solo se agranda hacia abajo */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agenda-escribir textarea:focus {
+  outline: none;
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px var(--acento-suave);
+}
+
+.btn-guardar {
+  align-self: flex-start;
+  border: none;
+  background: var(--acento);
+  color: white;
+}
+
+.btn-guardar:hover {
+  background: var(--acento-oscuro);
+}
+
+.agenda-error {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--error-suave);
+  color: var(--error);
+  font-size: 14px;
+}
+
+/* ========== En celular ========== */
+@media (max-width: 600px) {
+  .agenda-resumen {
+    margin: 16px 12px 8px;
+    gap: 8px;
+  }
+
+  .agenda-resumen div {
+    padding: 10px 12px;
+  }
+
+  .tarjeta-agenda {
+    margin: 12px;
+  }
+
+  .agenda-acciones {
+    width: 100%;
+  }
+
+  .agenda-acciones button {
+    flex: 1;
+  }
+}

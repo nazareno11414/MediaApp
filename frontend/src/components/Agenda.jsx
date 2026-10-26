@@ -14,7 +14,8 @@ export function Agenda({ turnosMedico, cambiarEstado, cambiarMotivo }) {
   const turnosAtendidos = turnosMedico.filter((t) => t.estado === "atendido");
 
   return (
-    <div>
+    <div className="agenda">
+      <div className="agenda-resumen">
       <div>
         <h3>{turnosHoy.length}</h3>
         <p>turnos hoy</p>
@@ -27,7 +28,8 @@ export function Agenda({ turnosMedico, cambiarEstado, cambiarMotivo }) {
         <h3>{turnosAtendidos.length}</h3>
         <p>turnos atendidos</p>
       </div>
-      <h4>HOY {hoy}</h4>
+      </div>
+      <h4 className="titulo-seccion">Hoy · {hoy}</h4>
       {turnosHoy.map((t) => (
         <TarjetaMiAgenda
           key={t.id}
@@ -41,7 +43,7 @@ export function Agenda({ turnosMedico, cambiarEstado, cambiarMotivo }) {
           cambiarMotivo={cambiarMotivo}
         />
       ))}
-      <h4>PROXIMOS DIAS</h4>
+      <h4 className="titulo-seccion">Próximos días</h4>
       {turnosProximos.map((t) => (
         <TarjetaMiAgenda
           key={t.id}

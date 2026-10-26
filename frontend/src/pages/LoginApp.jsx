@@ -56,7 +56,7 @@ export function LoginApp({ setRol, rol, setLogin }) {
             onChange={(e) => setPassw(e.target.value)}
           />
           <button
-            className="mostrarContraseña"
+            className="btn-ver"
             type="button"
             onClick={() => setCampoPassowrd(!campoPassword)}
           >

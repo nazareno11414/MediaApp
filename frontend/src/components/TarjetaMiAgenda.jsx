@@ -1,3 +1,4 @@
+import "../styles/style_miagenda.css";
 import { Fragment, useState, useEffect } from "react";
 export function TarjetaMiAgenda({
   horario,
@@ -11,7 +12,7 @@ export function TarjetaMiAgenda({
   const [indicar, setIndicar] = useState(false);
   const [textInd, setTextInd] = useState("");
   const [error, setError] = useState("");
-  const textoVacio = (text) => (text.trim("").length === 0 ? true : false);
+  const textoVacio = (text) => text.trim().length === 0;
   const [limpiar, setLimpiar] = useState(false);
   useEffect(() => {
     if (limpiar) {
@@ -22,37 +23,50 @@ export function TarjetaMiAgenda({
     }
   }, [limpiar, id, textInd, cambiarMotivo]);
   return (
-    <article>
-      <div>{horario}</div>
-      <div>
+    <article className="tarjeta-agenda">
+      <div className="agenda-hora">{horario}</div>
+      <div className="agenda-info">
         <h3>Ana Gomez</h3>
         <p>{motivo} - Osde</p>
-        <p>{estado}</p>
+        <p className={`estado ${estado}`}>{estado}</p>
       </div>
       {hoy && estado === "pendiente" && (
         <Fragment>
-          <button onClick={() => cambiarEstado(id)}>Marcar Atendido</button>
-          <button onClick={() => setIndicar(!indicar)}>
-            Escribir Indicacion
-          </button>
+          <div className="agenda-acciones">
+            <button className="btn-atendido" onClick={() => cambiarEstado(id)}>
+              Marcar Atendido
+            </button>
+            <button
+              className="btn-indicacion"
+              onClick={() => setIndicar(!indicar)}
+            >
+              Escribir Indicacion
+            </button>
+          </div>
           {indicar && (
             <Fragment>
-              <div>
-                <label htmlFor="text-indicacion">Indicacion:</label>
-                <input
-                  id="text-indicacion"
-                  type="text"
+              <div className="agenda-escribir">
+                <label htmlFor={id}>Indicacion:</label>
+                <textarea
+                  id={id}
                   value={textInd}
                   onChange={(e) => setTextInd(e.target.value)}
-                />
+                ></textarea>
                 <button
+                  className="btn-guardar"
                   onClick={() =>
-                    textoVacio(textInd) ? setError("Error") : setLimpiar(true)
+                    textoVacio(textInd)
+                      ? setError("Error, campo incompleto")
+                      : setLimpiar(true)
                   }
                 >
                   Agregar
                 </button>
-                {error && <p>{error}</p>}
+                {error && (
+                  <p class Name="agenda-error">
+                    {error}
+                  </p>
+                )}
               </div>
             </Fragment>
           )}

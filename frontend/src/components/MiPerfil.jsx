@@ -1,4 +1,4 @@
-import "../styles/style_mipefil.css";
+import "../styles/style_miperfil.css";
 import { Fragment } from "react";
 export function MiPerfil({ perfil }) {
   return (
